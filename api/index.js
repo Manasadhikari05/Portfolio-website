@@ -21,7 +21,4 @@ app.post("/response",(req,res)=>{
 });
 
 
-
-app.listen(port,()=>{
-    console.log(`listening on the port number ${port}`);
-});
+module.exports = app;
