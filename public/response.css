@@ -1,0 +1,103 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    background-color: #f8f9fa;
+    color: #2d3748;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  
+  /* Confirmation message styling */
+  .none {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #2d3748;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in;
+  }
+  
+  /* Link styling */
+  .ctscan {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #4a5568;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ctscan:hover {
+    background-color: #2d3748;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .ctscan:active {
+    transform: translateY(0);
+  }
+  
+  /* Container styling (if you want to add one) */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .none {
+      font-size: 2rem;
+    }
+    
+    body {
+      padding: 1.5rem;
+    }
+  }
+  
+  /* Optional accent color variations
+     Uncomment and replace the button background-color above if you prefer */
+  
+  .ctscan {
+    background-color: #3182ce; /* Blue */
+  }
+  
+  
+  .ctscan {
+    background-color: #38a169; /* Green */
+  }
+  
+  
+  .ctscan {
+    background-color: #805ad5; /* Purple */
+  }
