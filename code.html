@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>maity_amit_2003 - Codeforces</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            color: #000;
+            line-height: 1.4;
+            font-size: 14px;
+        }
+        
+        a {
+            color: #3B5998;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .browser-bar {
+            background-color: #293134;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            color: white;
+        }
+        
+        .browser-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+            display: inline-block;
+        }
+        
+        .red {
+            background-color: #ff5f57;
+        }
+        
+        .yellow {
+            background-color: #ffbd2e;
+        }
+        
+        .green {
+            background-color: #28ca41;
+        }
+        
+        .browser-address {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            margin-left: 20px;
+            flex: 1;
+            color: white;
+            max-width: 960px;
+        }
+        
+        .browser-icons {
+            display: flex;
+            margin-left: 20px;
+        }
+        
+        .browser-icon {
+            margin: 0 5px;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+        
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        
+        .header {
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e1e1e1;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .user-panel {
+            text-align: right;
+        }
+        
+        .main-nav {
+            padding: 10px 0;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #e1e1e1;
+        }
+        
+        .nav-list {
+            list-style: none;
+            display: flex;
+        }
+        
+        .nav-item {
+            margin-right: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .main-content {
+            padding: 20px 0;
+        }
+        
+        .profile-tabs {
+            list-style: none;
+            display: flex;
+            margin-bottom: 20px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        
+        .profile-tab {
+            padding: 5px 10px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        
+        .profile-tab.active {
+            background-color: #e1e1e1;
+            border-radius: 3px;
+        }
+        
+        .profile-section {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .profile-info {
+            flex: 1;
+            padding-right: 20px;
+        }
+        
+        .profile-photo {
+            width: 300px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #e1e1e1;
+            text-align: center;
+        }
+        
+        .profile-photo img {
+            width: 100%;
+            height: 80%;
+            max-width: 200px;
+        }
+        
+        .profile-title {
+            margin-bottom: 10px;
+        }
+        
+        .specialist {
+            color: #03A89E;
+        }
+        
+        .profile-username {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .profile-stat {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .star-icon {
+            margin-right: 10px;
+            color: #FFD700;
+        }
+        
+        .settings-icon {
+            margin-right: 10px;
+            color: #808080;
+        }
+        
+        .email-icon {
+            margin-right: 10px;
+            color: #808080;
+        }
+        
+        .online {
+            color: #008000;
+            font-weight: bold;
+        }
+        
+        .sidebar {
+            width: 300px;
+            margin-left: 20px;
+        }
+        
+        .sidebar-box {
+            background-color: #fff;
+            border: 1px solid #e1e1e1;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .sidebar-header {
+            background-color: #f0f0f0;
+            padding: 10px;
+            font-weight: bold;
+            border-bottom: 1px solid #e1e1e1;
+        }
+        
+        .sidebar-content {
+            padding: 10px;
+        }
+        
+        .contest-list {
+            list-style: none;
+        }
+        
+        .contest-item {
+            margin-bottom: 10px;
+        }
+        
+        .days-count {
+            color: #808080;
+        }
+        
+        .top-rated-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .top-rated-table th,
+        .top-rated-table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #e1e1e1;
+        }
+        
+        .chart-container {
+            background-color: #fff;
+            border: 1px solid #e1e1e1;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: #808080;
+        }
+        
+        .chart {
+            height: 300px;
+            background-color: #F8F8FA;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .zoom-info {
+            font-size: 12px;
+            color: #808080;
+            padding: 5px;
+        }
+        
+        .rating-dropdown {
+            padding: 3px;
+            font-size: 12px;
+        }
+        
+        .rating-layer {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: #e1e1e1;
+        }
+        
+        .layer-1900 {
+            top: 100px;
+        }
+        
+        .layer-1600 {
+            top: 200px;
+        }
+        
+        .layer-1400 {
+            top: 230px;
+        }
+
+        .y-axis {
+            position: absolute;
+            left: 10px;
+            font-size: 12px;
+            color: #808080;
+        }
+        
+        .y-1900 {
+            top: 95px;
+        }
+        
+        .y-1600 {
+            top: 195px;
+        }
+        
+        .y-1400 {
+            top: 225px;
+        }
+        
+        .color-sample {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        .yellow {
+            background-color: #ffd700;
+        }
+        
+        .cyan {
+            background-color: #03A89E;
+        }
+        
+        .green {
+            background-color: #00aa00;
+        }
+        
+        .rated-user {
+            color: #03A89E;
+        }
+
+        .rating-graph {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        .rating-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0), #ffd700);
+        }
+
+        .rating-dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #ffd700;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="browser-bar">
+        <div class="browser-button red"></div>
+        <div class="browser-button yellow"></div>
+        <div class="browser-button green"></div>
+        <div class="browser-address">codeforces.com/profile/maity_amit_2003</div>
+    </div>
+    
+    <div class="page-container">
+        <div class="header">
+            <div class="logo">
+                <img src="/api/placeholder/180/40" alt="Codeforces">
+                <div style="font-size: 12px; margin-left: 5px; color: #808080;">Sponsored by TON</div>
+            </div>
+            <div class="user-panel">
+                <a href="#">maity_amit_2003</a> | <a href="#">Logout</a>
+            </div>
+        </div>
+        
+        <div class="main-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#">Home</a></li>
+                <li class="nav-item"><a href="#">Top</a></li>
+                <li class="nav-item"><a href="#">Catalog</a></li>
+                <li class="nav-item"><a href="#">Contests</a></li>
+                <li class="nav-item"><a href="#">Gym</a></li>
+                <li class="nav-item"><a href="#">Problemset</a></li>
+                <li class="nav-item"><a href="#">Groups</a></li>
+                <li class="nav-item"><a href="#">Rating</a></li>
+                <li class="nav-item"><a href="#">Edu</a></li>
+                <li class="nav-item"><a href="#">API</a></li>
+                <li class="nav-item"><a href="#">Calendar</a></li>
+                <li class="nav-item"><a href="#">Help</a></li>
+                <li class="nav-item"><a href="#">Rayan 🏆</a></li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <ul class="profile-tabs">
+                <li class="profile-tab active">MAITY_AMIT_2003</li>
+                <li class="profile-tab">SETTINGS</li>
+                <li class="profile-tab">LISTS</li>
+                <li class="profile-tab">BLOG</li>
+                <li class="profile-tab">TEAMS</li>
+                <li class="profile-tab">SUBMISSIONS</li>
+                <li class="profile-tab">CONTESTS</li>
+            </ul>
+            
+            <div class="content-wrapper" style="display: flex;">
+                <div style="flex: 1;">
+                    <div class="profile-section">
+                        <div class="profile-info">
+                            <div class="profile-title">
+                                <div class="specialist">Specialist</div>
+                                <h1 class="profile-username">manasadhikari087</h1>
+                            </div>
+                            
+                            <div class="profile-stat">
+                                Manas Adhikari, <a href="#">Dehradun</a>, <a href="#">India</a>
+                            </div>
+                            
+                            <div class="profile-stat">
+                                <span class="star-icon">★</span> Contest rating: <span class="specialist">1424</span> (max. specialist, 1424)
+                            </div>
+                            
+                            <div class="profile-stat">
+                                <span class="star-icon">★</span> Contribution: +13
+                            </div>
+                            
+                            <div class="profile-stat">
+                                <span class="star-icon">★</span> Friend of: 65 users
+                            </div>
+                            
+                            <div class="profile-stat">
+                                Last visit: <span class="online">online now</span>
+                            </div>
+                            
+                            <div class="profile-stat">
+                                Registered: 22 months ago
+                            </div>
+                            
+                            <div class="profile-stat">
+                                <span>📝</span> <a href="#">Blog entries (2)</a>, <a href="#">comments</a>
+                            </div>
+                            
+                            <div class="profile-stat">
+                                <span>✉</span> <a href="#">Talks</a> | <a href="#">Send message</a>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-photo">
+                            <img src="views/Screenshot 2025-03-12 at 1.12.01 PM.png" alt="User profile photo - Shiba dog with Surf bottle">
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <div class="zoom-info">Click on the graph to enable the zoom feature.</div>
+                            <div>
+                                <select class="rating-dropdown">
+                                    <option>Only rated</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart">
+                            <div class="y-axis y-1900">1900</div>
+                            <div class="rating-layer layer-1900"></div>
+                            <div class="y-axis y-1600">1600</div>
+                            <div class="rating-layer layer-1600"></div>
+                            <div class="y-axis y-1400">1400</div>
+                            <div class="rating-layer layer-1400"></div>
+                            
+                            <div style="position: absolute; top: 20px; right: 20px; background-color: #ffffdd; padding: 5px; border: 1px solid #e1e1e1; font-size: 12px;">
+                                <div><span class="color-sample yellow"></span>maity_amit_2003</div>
+                            </div>
+
+                            <div class="rating-graph">
+                                <!-- Simulated rating line -->
+                                <div class="rating-dot" style="bottom: 20%; left: 5%"></div>
+                                <div class="rating-dot" style="bottom: 25%; left: 10%"></div>
+                                <div class="rating-dot" style="bottom: 30%; left: 15%"></div>
+                                <div class="rating-dot" style="bottom: 28%; left: 20%"></div>
+                                <div class="rating-dot" style="bottom: 32%; left: 25%"></div>
+                                <div class="rating-dot" style="bottom: 35%; left: 30%"></div>
+                                <div class="rating-dot" style="bottom: 34%; left: 35%"></div>
+                                <div class="rating-dot" style="bottom: 37%; left: 40%"></div>
+                                <div class="rating-dot" style="bottom: 39%; left: 45%"></div>
+                                <div class="rating-dot" style="bottom: 40%; left: 50%"></div>
+                                <div class="rating-dot" style="bottom: 42%; left: 55%"></div>
+                                <div class="rating-dot" style="bottom: 41%; left: 60%"></div>
+                                <div class="rating-dot" style="bottom: 43%; left: 65%"></div>
+                                <div class="rating-dot" style="bottom: 44%; left: 70%"></div>
+                                <div class="rating-dot" style="bottom: 45%; left: 75%"></div>
+                                <div class="rating-dot" style="bottom: 46%; left: 80%"></div>
+                                <div class="rating-dot" style="bottom: 47%; left: 85%"></div>
+                                <div class="rating-dot" style="bottom: 48%; left: 90%"></div>
+                                <div class="rating-dot" style="bottom: 50%; left: 95%"></div>
+                                <div class="rating-dot" style="bottom: 48%; left: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <div class="sidebar-box">
+                        <div class="sidebar-header">→ Pay attention</div>
+                        <div class="sidebar-content">
+                            <ul class="contest-list">
+                                <li class="contest-item">
+                                    <div>Before contest</div>
+                                    <div><a href="#">Codeforces Round (Div. 1)</a></div>
+                                    <div class="days-count">3 days</div>
+                                </li>
+                                <li class="contest-item">
+                                    <div>Before contest</div>
+                                    <div><a href="#">Codeforces Round (Div. 2)</a></div>
+                                    <div class="days-count">3 days</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-box">
+                        <div class="sidebar-header">→ maity_amit_2003</div>
+                        <div class="sidebar-content">
+                            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                <span style="margin-right: 10px;">★</span> Contribution: +13
+                                <img src="/api/placeholder/50/50" alt="Small profile" style="margin-left: auto;">
+                            </div>
+                            <ul style="list-style-type: disc; margin-left: 20px;">
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Teams</a></li>
+                                <li><a href="#">Submissions</a></li>
+                                <li><a href="#">Talks</a></li>
+                                <li><a href="#">Contests</a></li>
+                            </ul>
+                            <div style="text-align: center; margin-top: 10px;">maity_amit_2003</div>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-box">
+                        <div class="sidebar-header">→ Top rated</div>
+                        <div class="sidebar-content">
+                            <table class="top-rated-table">
+                                <tr>
+                                    <th>#</th>
+                                    <th>User</th>
+                                    <th>Rating</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td><a href="#" class="rated-user">jiangly</a></td>
+                                    <td>3846</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><a href="#" class="rated-user">tourist</a></td>
+                                    <td>3799</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><a href="#" class="rated-user">orzdevinwang</a></td>
+                                    <td>3706</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td><a href="#" class="rated-user">jqdai0815</a></td>
+                                    <td>3682</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td><a href="#" class="rated-user">ksun48</a></td>
+                                    <td>3590</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td><a href="#" class="rated-user">Ormiis</a></td>
+                                    <td>3533</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td><a href="#" class="rated-user">Benq</a></td>
+                                    <td>3468</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td><a href="#" class="rated-user">Radewoosh</a></td>
+                                    <td>3463</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
