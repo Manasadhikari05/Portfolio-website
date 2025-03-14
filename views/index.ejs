@@ -275,7 +275,20 @@
                             <span>MongoDB</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn btn-sm">View Demo</a>
+                            <a href="#" class="btn btn-sm" id="alertButton">View Demo</a>
+                            <script>
+                                // Get the button element by its id
+                                const alertButton = document.getElementById('alertButton');
+                            
+                                // Add event listener to show alert on click
+                                alertButton.addEventListener('click', function(event) {
+                                  // Prevent the default link behavior (optional)
+                                  event.preventDefault();
+                            
+                                  // Show the alert
+                                  alert('There is problem while loading this. You may demo other projects!');
+                                });
+                              </script>
                             <a href="https://github.com/Manasadhikari05/herb-haven" class="btn btn-sm btn-secondary">GitHub</a>
                         </div>
                     </div>
